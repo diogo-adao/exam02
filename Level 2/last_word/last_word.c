@@ -5,16 +5,16 @@ int main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		int i = 0;
-		char *upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
 		while (argv[1][i])
+			i++;
+		i--;
+		while (argv[1][i] == 32)
+			i--;
+		while (i >= 0 && argv[1][i] != 32)
+			i--;
+		i++;
+		while(argv[1][i] && argv[1][i] != 32)
 		{
-			if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
-			{
-				int c = argv[1][i] + 32;
-				write(1, "_", 1);
-				write(1, &c, 1);
-			} else
 			write(1, &argv[1][i], 1);
 			i++;
 		}
