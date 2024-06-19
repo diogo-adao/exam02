@@ -5,16 +5,15 @@ int main(int argc, char *argv[])
 	if (argc == 2)
 	{
 		int i = 0;
-
 		while (argv[1][i])
 		{
-			if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
+			if (argv[1][i] == '_')
 			{
-				int c = argv[1][i] + 32;
-				write(1, "_", 1);
+				i++;
+				int c = argv[1][i] - 32;
 				write(1, &c, 1);
 			} else
-			write(1, &argv[1][i], 1);
+				write(1, &argv[1][i], 1);
 			i++;
 		}
 	}
