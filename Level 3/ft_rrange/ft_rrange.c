@@ -7,7 +7,7 @@ static int	malloc_size(int count, int start, int end)
 		while (start <= end)
 		{
 			count++;
-			start++;
+			end--;
 		}
 	}
 	else if (start > end)
@@ -15,13 +15,13 @@ static int	malloc_size(int count, int start, int end)
 		while (start >= end)
 		{
 			count++;
-			start--;
+			end++;
 		}
 	}
 	return (count);
 }
 
-int	*ft_range(int start, int end)
+int	*ft_rrange(int start, int end)
 {
 	int count = malloc_size(0, start, end);
 	int i = 0;
@@ -33,8 +33,8 @@ int	*ft_range(int start, int end)
 	{
 		while (start <= end)
 		{
-			n[i] = start;
-			start++;
+			n[i] = end;
+			end--;
 			i++;
 		}
 	}
@@ -42,8 +42,8 @@ int	*ft_range(int start, int end)
 	{
 		while (start >= end)
 		{
-			n[i] = start;
-			start--;
+			n[i] = end;
+			end++;
 			i++;
 		}
 	}
