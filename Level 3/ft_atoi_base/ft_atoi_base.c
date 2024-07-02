@@ -1,10 +1,9 @@
-// IDK
-
-char	to_lower(char c)
+char	ft_lower(char c)
 {
 	if (c >= 'A' && c <= 'Z')
-		return (c + ('a' - 'A'));
-	return (c);
+		return (c + 32);
+	else
+		return (c);
 }
 
 int get_digit(char c, int digits_in_base)
@@ -14,9 +13,9 @@ int get_digit(char c, int digits_in_base)
 		max_digit = digits_in_base + '0';
 	else
 		max_digit = digits_in_base - 10 + 'a';
-	if (c >= '0' && c <= '9' && c <= max_digit)
+	if (c >= '0' && c <= '9' && c < max_digit)
 		return (c - '0');
-	else if (c >= 'a' && c <= 'f' && c <= max_digit)
+	else if (c >= 'a' && c <= 'f' && c < max_digit)
 		return (10 + c - 'a');
 	else
 		return (-1);
@@ -34,19 +33,11 @@ int ft_atoi_base(const char *str, int str_base)
 		++str;
 	}
 
-	while ((digit = get_digit(to_lower(*str), str_base)) >= 0)
+	while ((digit = get_digit(ft_lower(*str), str_base)) >= 0)
 	{
 		result = result * str_base;
 		result = result + (digit * sign);
 		++str;
 	}
 	return (result);
-}
-
-#include <stdio.h>
-int main()
-{
-	int n = ft_atoi_base("123", 4);
-	printf("%d\n", n);
-	return (0);
 }
