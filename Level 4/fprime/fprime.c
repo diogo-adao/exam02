@@ -5,21 +5,22 @@ int	main(int argc, char *argv[])
 {
 	if (argc == 2)
 	{
-		int i = 1;
-		int n = atoi(argv[1]);
-		if (n == 1)
+		int n = 2;
+		int arg = atoi(argv[1]);
+		if (arg == 1)
 			printf("1");
-		while (n >= ++i)
+		while (arg >= n)
 		{
-			if (n % i == 0)
+			if ((arg % n) == 0)
 			{
-				printf("%d", i);
-				if (n == i)
+				printf("%d", n);
+				if (arg == n)
 					break ;
 				printf("*");
-				n /= i;
-				i = 1;
+				arg = arg / n;
+				n = 1;
 			}
+			n++;
 		}
 	}
 	printf("\n");
